@@ -1,0 +1,861 @@
+% =========================================================
+% FILE: lab2_task1_discrete_shift.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = 0:12;
+signal = [0 1 2 3 4 5 6 5 4 3 2 1 0];
+
+left_shift = t - 3;
+right_shift = t + 3;
+
+subplot(3,1,1);
+stem(t,signal,'filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal');
+grid on;
+
+subplot(3,1,2);
+stem(left_shift,signal,'b','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Left Shift by 3');
+grid on;
+
+subplot(3,1,3);
+stem(right_shift,signal,'r','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Right Shift by 3');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task2_discrete_scaling.m
+% Scales plotting coordinates; compressed indices include
+% fractional values.
+% =========================================================
+clc;
+clear;
+close all;
+
+n = 0:12;
+signal = [0 1 2 3 4 5 6 5 4 3 2 1 0];
+
+compressed = 0.5*n;
+expanded = 2*n;
+
+subplot(3,1,1);
+stem(n,signal,'r','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal');
+grid on;
+
+subplot(3,1,2);
+stem(compressed,signal,'filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Compressed Signal');
+grid on;
+
+subplot(3,1,3);
+stem(expanded,signal,'b','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Expanded Signal');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task3_discrete_reversal.m
+% =========================================================
+clc;
+clear;
+close all;
+
+n = -4:8;
+signal = [0 1 2 3 4 5 6 5 4 3 2 1 0];
+
+time_reversal = -n;
+
+subplot(2,1,1);
+stem(n,signal,'r','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal');
+grid on;
+
+subplot(2,1,2);
+stem(time_reversal,signal,'b','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Time-Reversed Signal');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task4_discrete_amplitude.m
+% =========================================================
+clc;
+clear;
+close all;
+
+n = 0:12;
+signal = [0 1 2 3 5 5 3 5 2 3 2 1 0];
+
+amplitude_scaling = 2*signal;
+
+subplot(2,1,1);
+stem(n,signal,'r','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal');
+grid on;
+
+subplot(2,1,2);
+stem(n,amplitude_scaling,'b','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Amplitude Doubled');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task5_discrete_addition.m
+% =========================================================
+clc;
+clear;
+close all;
+
+n = 0:12;
+
+signal_01 = [0 1 2 3 5 5 3 5 2 3 2 1 0];
+signal_02 = [0 2 2 3 5 5 6 5 2 3 4 1 0];
+
+addition_of_signal = signal_01 + signal_02;
+
+subplot(3,1,1);
+stem(n,signal_01,'r','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Signal 1');
+grid on;
+
+subplot(3,1,2);
+stem(n,signal_02,'filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Signal 2');
+grid on;
+
+subplot(3,1,3);
+stem(n,addition_of_signal,'b','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Addition of Signals');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task6_discrete_multiplication.m
+% =========================================================
+clc;
+clear;
+close all;
+
+n = 0:12;
+
+signal_01 = [0 1 2 3 5 5 3 5 2 3 2 1 0];
+signal_02 = [0 2 2 3 5 5 6 5 2 3 4 1 0];
+
+multiplication_of_signal = signal_01 .* signal_02;
+
+subplot(3,1,1);
+stem(n,signal_01,'r','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Signal 1');
+grid on;
+
+subplot(3,1,2);
+stem(n,signal_02,'filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Signal 2');
+grid on;
+
+subplot(3,1,3);
+stem(n,multiplication_of_signal,'b','filled');
+xlabel('Time');
+ylabel('Amplitude');
+title('Multiplication of Signals');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task1_continuous_shift.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = -4*pi:0.01:4*pi;
+f = 1;
+t0 = 1/2;
+
+signal = sin(2*pi*f*t);
+right_shift = sin(2*pi*f*(t - t0));
+left_shift = sin(2*pi*f*(t + t0));
+
+subplot(3,1,1);
+plot(t,signal);
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal');
+grid on;
+
+subplot(3,1,2);
+plot(t,right_shift,'r');
+xlabel('Time');
+ylabel('Amplitude');
+title('Right Shift');
+grid on;
+
+subplot(3,1,3);
+plot(t,left_shift,'b');
+xlabel('Time');
+ylabel('Amplitude');
+title('Left Shift');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task2_continuous_scaling.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = -2:0.001:2;
+f = 1;
+
+signal = sin(2*pi*f*t);
+compressed = sin(2*pi*f*(2*t));
+expanded = sin(2*pi*f*(t/2));
+
+subplot(3,1,1);
+plot(t,signal);
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal');
+grid on;
+
+subplot(3,1,2);
+plot(t,compressed,'r');
+xlabel('Time');
+ylabel('Amplitude');
+title('Compressed Signal');
+grid on;
+
+subplot(3,1,3);
+plot(t,expanded,'b');
+xlabel('Time');
+ylabel('Amplitude');
+title('Expanded Signal');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task3_continuous_reversal.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = -2:0.001:2;
+f = 1;
+
+signal = sin(2*pi*f*t);
+time_reversal = sin(2*pi*f*(-t));
+
+subplot(2,1,1);
+plot(t,signal);
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal');
+grid on;
+
+subplot(2,1,2);
+plot(t,time_reversal,'r');
+xlabel('Time');
+ylabel('Amplitude');
+title('Time-Reversed Signal');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task4_continuous_amplitude.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = -2:0.001:2;
+f = 1;
+
+signal = sin(2*pi*f*t);
+amplitude_scaling = 2*signal;
+
+subplot(2,1,1);
+plot(t,signal);
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Signal');
+grid on;
+
+subplot(2,1,2);
+plot(t,amplitude_scaling,'r');
+xlabel('Time');
+ylabel('Amplitude');
+title('Amplitude Doubled');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task5_continuous_addition.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = -2:0.001:2;
+f = 1;
+
+signal_01 = sin(2*pi*f*t);
+signal_02 = cos(2*pi*f*t);
+
+addition_of_signal = signal_01 + signal_02;
+
+subplot(3,1,1);
+plot(t,signal_01);
+xlabel('Time');
+ylabel('Amplitude');
+title('Sine Signal');
+grid on;
+
+subplot(3,1,2);
+plot(t,signal_02,'b');
+xlabel('Time');
+ylabel('Amplitude');
+title('Cosine Signal');
+grid on;
+
+subplot(3,1,3);
+plot(t,addition_of_signal,'r');
+xlabel('Time');
+ylabel('Amplitude');
+title('Addition of Signals');
+grid on;
+
+
+% =========================================================
+% FILE: lab2_task6_continuous_multiplication.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = -2:0.001:2;
+f = 1;
+
+signal_01 = sin(2*pi*f*t);
+signal_02 = cos(2*pi*f*t);
+
+multiplication_of_signal = signal_01 .* signal_02;
+
+subplot(3,1,1);
+plot(t,signal_01);
+xlabel('Time');
+ylabel('Amplitude');
+title('Sine Signal');
+grid on;
+
+subplot(3,1,2);
+plot(t,signal_02,'b');
+xlabel('Time');
+ylabel('Amplitude');
+title('Cosine Signal');
+grid on;
+
+subplot(3,1,3);
+plot(t,multiplication_of_signal,'r');
+xlabel('Time');
+ylabel('Amplitude');
+title('Multiplication of Signals');
+grid on;
+
+
+% =========================================================
+% FILE: lab3_task2_unit_step.m
+% =========================================================
+clc;
+clear;
+close all;
+
+syms t;
+
+sgn = sign(t);
+u = (1 + sgn)/2;
+
+fplot(u,[-5 5],'LineWidth',2);
+grid on;
+
+xlabel('t');
+ylabel('u(t)');
+title('Unit Step Function');
+
+
+% =========================================================
+% FILE: lab3_task3_even_odd.m
+% =========================================================
+clc;
+clear;
+close all;
+
+n = -5:5;
+
+x = double(n >= 0);
+
+x_even = (x + fliplr(x))/2;
+x_odd = (x - fliplr(x))/2;
+
+subplot(3,1,1);
+stem(n,x);
+grid on;
+title('Original Signal x[n]');
+
+subplot(3,1,2);
+stem(n,x_even);
+grid on;
+title('Even Part');
+
+subplot(3,1,3);
+stem(n,x_odd);
+grid on;
+title('Odd Part');
+
+
+% =========================================================
+% FILE: lab3_task4_discrete_sinusoid.m
+% =========================================================
+clc;
+clear;
+close all;
+
+n = 0:20;
+
+x = 2*sin(2*pi*n/7);
+
+stem(n,x);
+grid on;
+
+xlabel('n');
+ylabel('x[n]');
+title('Discrete-Time Sinusoid');
+
+
+% =========================================================
+% FILE: lab3_task5_decaying_sinusoid.m
+% Script version from the report
+% =========================================================
+clc;
+clear;
+close all;
+
+A = 2;
+a = 0.1;
+T = 5;
+
+t = 0:0.01:20;
+
+x = A*exp(-a*t).*sin(2*pi*t/T);
+
+plot(t,x,'LineWidth',2);
+grid on;
+
+xlabel('t');
+ylabel('x(t)');
+title('Exponentially Decaying Sinusoid');
+
+
+% =========================================================
+% FILE: lab3_task6_sine_harmonics.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = 0:0.01:2*pi;
+
+x = zeros(size(t));
+
+for k = 1:10
+    x = x + sin(k*t);
+end
+
+plot(t,x,'LineWidth',2);
+grid on;
+
+xlabel('t');
+ylabel('x(t)');
+title('Sum of First 10 Sine Harmonics');
+
+
+% =========================================================
+% FILE: lab3_task7_cosine_harmonics.m
+% =========================================================
+clc;
+clear;
+close all;
+
+t = 0:0.01:2*pi;
+
+x = zeros(size(t));
+
+for k = 1:10
+    x = x + cos(k*t);
+end
+
+plot(t,x,'LineWidth',2);
+grid on;
+
+xlabel('t');
+ylabel('x(t)');
+title('Sum of First 10 Cosine Harmonics');
+
+
+% =========================================================
+% FILE: lab4_task1_pulse_convolution.m
+% Includes the additional deconvolution check
+% =========================================================
+clc;
+clear;
+close all;
+
+dt = 0.01;
+t = -1:dt:2;
+
+x = double(t >= 0 & t <= 1);
+
+y = conv(x,x);
+
+t_conv = 2*t(1):dt:2*t(end);
+
+figure;
+plot(t_conv,y*dt,'LineWidth',2);
+grid on;
+xlabel('t');
+ylabel('y(t)');
+title('Convolution of Unit Pulse with Itself');
+
+[x_recovered,remainder] = deconv(y,x);
+
+figure;
+plot(t,x_recovered,'LineWidth',2);
+grid on;
+xlabel('t');
+ylabel('x(t)');
+title('Recovered Unit Pulse');
+
+
+% =========================================================
+% FILE: lab4_task2_manual_convolution.m
+% Keep task2function.m in the same folder
+% =========================================================
+clc;
+clear;
+close all;
+
+x = [1 2 3 4];
+h = [1 2 1];
+
+y = task2function(x,h);
+
+disp('Convolution result:');
+disp(y);
+
+n = 0:length(y)-1;
+
+stem(n,y,'filled');
+title('Convolution Result - 2024474');
+xlabel('n');
+ylabel('Amplitude');
+grid on;
+
+
+% =========================================================
+% FILE: task2function.m
+% =========================================================
+function y = task2function(x,h)
+
+    Nx = length(x);
+    Nh = length(h);
+
+    y = zeros(1,Nx + Nh - 1);
+
+    for i = 1:Nx
+        for j = 1:Nh
+            y(i+j-1) = y(i+j-1) + x(i)*h(j);
+        end
+    end
+
+end
+
+
+% =========================================================
+% FILE: lab4_task3_lti_output.m
+% =========================================================
+clc;
+clear;
+close all;
+
+x = [2 3 -2];
+h = [1 2 1];
+
+y = zeros(1,length(x) + length(h) - 1);
+
+for i = 1:length(x)
+    for j = 1:length(h)
+        y(i+j-1) = y(i+j-1) + x(i)*h(j);
+    end
+end
+
+disp('Output y[n] = ');
+disp(y);
+
+n = -1:3;
+
+stem(n,y,'filled');
+title('Output of LTI System - 2024474');
+xlabel('n');
+ylabel('y[n]');
+grid on;
+
+
+% =========================================================
+% FILE: lab4_task4_finite_convolution.m
+% =========================================================
+clc;
+clear;
+close all;
+
+nx = -2:11;
+nh = 2:12;
+
+x = 2*ones(1,length(nx));
+h = 0.9.^nh;
+
+y = conv(x,h);
+
+ny = (nx(1)+nh(1)):(nx(end)+nh(end));
+
+subplot(3,1,1);
+stem(nx,x,'filled');
+grid on;
+xlabel('n');
+ylabel('x[n]');
+title('Input Signal x[n]');
+
+subplot(3,1,2);
+stem(nh,h,'filled');
+grid on;
+xlabel('n');
+ylabel('h[n]');
+title('Impulse Response h[n]');
+
+subplot(3,1,3);
+stem(ny,y,'filled');
+grid on;
+xlabel('n');
+ylabel('y[n]');
+title('Convolution y[n] - 2024474');
+
+
+% =========================================================
+% FILE: lab4_hometask_convolution_sums.m
+% Report's loop approach.
+% The second result is truncated because k starts at -5.
+% =========================================================
+clc;
+clear;
+close all;
+
+n = -5:10;
+
+% 1. u[n] * u[n-3]
+x1 = double(n >= 0);
+y1 = zeros(1,length(n));
+
+for i = 1:length(n)
+    for j = 1:length(n)
+
+        k = n(j);
+
+        if n(i)-k >= 0
+            y1(i) = y1(i) ...
+                  + x1(j)*double(n(i)-k >= 3);
+        end
+
+    end
+end
+
+disp('y1 = ');
+disp(y1);
+
+% 2. (2^n u[-n+2]) * u[n-3]
+x2 = 2.^n .* double(n <= 2);
+y2 = zeros(1,length(n));
+
+for i = 1:length(n)
+    for j = 1:length(n)
+
+        k = n(j);
+
+        if n(i)-k >= 3
+            y2(i) = y2(i) + x2(j);
+        end
+
+    end
+end
+
+% For the exact infinite-sum result, use this instead:
+% y2 = 2.^(min(2,n-3) + 1);
+
+disp('y2 = ');
+disp(y2);
+
+% 3. ((1/2)^n u[n-2]) * u[n]
+x3 = (1/2).^n .* double(n >= 2);
+y3 = zeros(1,length(n));
+
+for i = 1:length(n)
+    for j = 1:length(n)
+
+        k = n(j);
+
+        if n(i)-k >= 0
+            y3(i) = y3(i) + x3(j);
+        end
+
+    end
+end
+
+disp('y3 = ');
+disp(y3);
+
+figure;
+
+subplot(3,1,1);
+stem(n,y1,'filled');
+title('y1[n] = u[n] * u[n-3]');
+xlabel('n');
+ylabel('y1[n]');
+grid on;
+
+subplot(3,1,2);
+stem(n,y2,'filled');
+title('y2[n] = (2^n u[-n+2]) * u[n-3]');
+xlabel('n');
+ylabel('y2[n]');
+grid on;
+
+subplot(3,1,3);
+stem(n,y3,'filled');
+title('y3[n] = ((1/2)^n u[n-2]) * u[n]');
+xlabel('n');
+ylabel('y3[n]');
+grid on;
+
+
+% =========================================================
+% FILE: lab5_task1_fourier_series.m
+% Integration limits below are for T = 2.
+% =========================================================
+clc;
+clear;
+close all;
+
+% Basic parameters
+fs = 100;
+T = 2;
+Wo = 2*pi/T;
+
+k = 0:1/fs:10-1/fs;
+
+% Original square wave
+y = square(Wo*k,50);
+
+figure;
+plot(k,y,'r','LineWidth',2);
+axis([-1 12 -2 2]);
+xlabel('Time');
+ylabel('Amplitude');
+title('Original Square Wave');
+grid on;
+
+% Fourier coefficients
+syms t;
+
+N = 10;
+
+a0 = (1/T)*(int(1,t,0,1) + int(-1,t,1,2));
+
+an = zeros(1,N);
+bn = zeros(1,N);
+
+for i = 1:N
+
+    an(i) = (2/T)*double( ...
+        int(cos(i*Wo*t),t,0,1) + ...
+        int(-cos(i*Wo*t),t,1,2));
+
+    bn(i) = (2/T)*double( ...
+        int(sin(i*Wo*t),t,0,1) + ...
+        int(-sin(i*Wo*t),t,1,2));
+
+end
+
+% Build Fourier approximation
+F = double(a0)*ones(size(k));
+
+for i = 1:N
+    F = F + an(i)*cos(i*Wo*k) ...
+          + bn(i)*sin(i*Wo*k);
+end
+
+% Plot Fourier approximation
+figure;
+plot(k,F,'g','LineWidth',2);
+xlabel('Time');
+ylabel('Amplitude');
+title('Fourier Series of Square Wave');
+grid on;
+
+% Compare both signals
+figure;
+plot(k,y,'r','LineWidth',3);
+hold on;
+
+plot(k,F,'g','LineWidth',1);
+axis([-1 12 -2 2]);
+xlabel('Time');
+ylabel('Amplitude');
+title('Fourier Series Approximation of Square Wave');
+legend('Original Square Wave','Fourier Approximation');
+grid on;
+
+hold off;
